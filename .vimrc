@@ -111,8 +111,8 @@
     set ffs=unix,dos,mac " Prioritize unix as the standard file type.
     set encoding=utf-8 " Vim can now work with a whole bunch more characters (powerline too).
     set scrolloff=8 " The screen will only scroll when the cursor is 8 characters from the top/bottom.
-    set foldmethod=indent " Pressing zc will close a fold at the current indent while zo will open one.
-    set foldopen+=jump " Additionally, open folds when there is a direct jump to the location.
+    "set foldmethod=indent " Pressing zc will close a fold at the current indent while zo will open one.
+    "set foldopen+=jump " Additionally, open folds when there is a direct jump to the location.
 
     set wildmenu " Enable the 'autocomplete' menu when in command mode (':').
     set cursorline " For easier cursor spotting. Completely optional though (but so is bathing).
@@ -251,4 +251,9 @@
     noremap <leader>f :Ack! 
     " Shortcut for Tabulate.
     noremap <leader>a :Tab /
+    " Shortcut for saving
+    noremap <leader>w :w<cr>
 " }
+
+au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
